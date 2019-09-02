@@ -1,7 +1,7 @@
 <template>
   <div class="search">
     <div class="brand">
-      <a href="/">Glad.gg</a>
+      <a href="/">Warena</a>
     </div>
     <form method="post" accept-charset="utf-8" id="search-form" @submit.prevent="userSearch" novalidate="novalidate">
       <div style="display:none;">

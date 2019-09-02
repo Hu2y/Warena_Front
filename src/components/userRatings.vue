@@ -5,8 +5,8 @@
         <h1>2v2</h1>
         <div class="rating">{{this.$store.state.userInfo.data[0].rating}}</div>
         <!-- <div data-toggle="tooltip" title="56 losses">82 wins (59%)</div> -->
-        <span v-tooltip.top="'my text'">{{`Season : ${this.$store.state.userInfo.data[0].season_match_statistics.won}`}} </span> <br/>
-        <span v-tooltip.top="'my text'">Weekly : </span>
+        <span v-tooltip.top="this.$store.state.userInfo.data[0].season_match_statistics.lost + ' losses'">Season: {{this.$store.state.userInfo.data[0].season_match_statistics.won}}wins ({{parseInt(this.$store.state.userInfo.data[0].season_match_statistics.won/this.$store.state.userInfo.data[0].season_match_statistics.played * 100) + "%"}}) </span> <br/>
+        <span v-tooltip.top="this.$store.state.userInfo.data[0].weekly_match_statistics.lost + ' losses'">Weekly: {{this.$store.state.userInfo.data[0].weekly_match_statistics.won}}wins ({{parseInt(this.$store.state.userInfo.data[0].weekly_match_statistics.won/this.$store.state.userInfo.data[0].weekly_match_statistics.played * 100) + "%"}})</span>
         <div class="peaks">
           <div>
             <span data-toggle="tooltip" data-placement="right" title="August 27, 2019">
@@ -24,8 +24,9 @@
       </div>
       <div>
         <h1>3v3</h1>
-        <div class="rating">2103</div>
-        <div data-toggle="tooltip" title="134 losses">157 wins (54%)</div>
+        <div class="rating">{{this.$store.state.userInfo.data[1].rating}}</div>
+        <span v-tooltip.top="this.$store.state.userInfo.data[1].season_match_statistics.lost + ' losses'">Season: {{this.$store.state.userInfo.data[1].season_match_statistics.won}}wins ({{parseInt(this.$store.state.userInfo.data[1].season_match_statistics.won/this.$store.state.userInfo.data[1].season_match_statistics.played * 100) + "%"}}) </span> <br/>
+        <span v-tooltip.top="this.$store.state.userInfo.data[1].weekly_match_statistics.lost + ' losses'">Weekly: {{this.$store.state.userInfo.data[1].weekly_match_statistics.won}}wins ({{parseInt(this.$store.state.userInfo.data[1].weekly_match_statistics.won/this.$store.state.userInfo.data[1].weekly_match_statistics.played * 100) + "%"}})</span>
         <div class="peaks">
           <div>
             <span data-toggle="tooltip" data-placement="right" title="August 27, 2019">
@@ -65,6 +66,8 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+
 export default {
   data() {
     return {
@@ -72,9 +75,9 @@ export default {
     }
   },
   computed: {
-    winrate() {
-      return this.$store.state.userInfo.data[0].season_match_statistics
-    }
+    ...mapGetters({
+      winRating: 'winrating'
+    })
   }
 }
 </script>

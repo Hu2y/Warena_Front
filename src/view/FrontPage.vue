@@ -103,7 +103,7 @@ export default {
     userSearch,
     userProfile,
     userRatings,
-    userTitles
+    userTitles,
   }
 }
 </script>

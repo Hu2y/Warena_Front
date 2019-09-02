@@ -1,0 +1,27 @@
+<html>
+<head>
+<script language="javascript">
+function onlyKor(field){
+ var ok = "yes";
+ for(i=0; i<field.value.length; i++) {
+  if (field.value.charAt(i)<"가" || field.value.charAt(i) >"힣"){
+   ok = "no";
+  }else{
+   ok = "yes";
+  }
+ }
+ if (ok == "no") {
+  alert('성명(을)를 정확히 입력해주세요.');
+  Form1.txtRefundDepositor.value = '';
+  field.focus();
+  field.select();
+ }
+}
+</script>
+</head>
+<body>
+<form id="Form1">
+<input type="text" name="txtRefundDepositor" size="10" maxlength="10" onblur="onlyKor(this)" style="IME-MODE: active">
+</form>
+</body>
+</html>
